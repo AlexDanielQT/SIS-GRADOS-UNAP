@@ -1,0 +1,315 @@
+/* src/assets/styles/custom.css */
+
+/* --- 1. VARIABLES & RESET --- */
+:root {
+  --primary: #5c2d91;      /* Morado UNAP */
+  --primary-light: #f3e8ff;
+  --secondary: #eab308;    /* Dorado */
+  --success: #059669;      /* Verde */
+  --danger: #dc2626;       /* Rojo */
+  --gray: #64748b;         /* Gris texto */
+  --bg-color: #f1f5f9;     /* Fondo general */
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background-color: var(--bg-color);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #1e293b;
+}
+
+/* --- 2. TARJETAS (El cuadro blanco) --- */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px; /* Más padding para que respire como en la foto */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+  margin-bottom: 24px;
+}
+
+/* --- 3. STEPPER (La línea de tiempo horizontal) --- */
+.stepper {
+  display: flex; /* ¡CRUCIAL! Esto pone los items lado a lado */
+  justify-content: space-between;
+  position: relative;
+  margin: 40px 0;
+}
+
+/* La línea gris de fondo */
+.stepper::before {
+  content: '';
+  position: absolute;
+  top: 15px; /* Centrado verticalmente con el círculo */
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #e2e8f0;
+  z-index: 0;
+}
+
+/* Cada ítem del paso */
+.step {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  width: 25%; /* Para distribuir en 4 partes iguales */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* El círculo del número */
+.step-circle {
+  width: 32px;
+  height: 32px;
+  background: white; /* Blanco para tapar la línea gris */
+  border: 2px solid #cbd5e1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  color: var(--gray);
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+}
+
+/* Estado Activo (Morado con halo) */
+.step.active .step-circle {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+/* Estado Completado (Verde) */
+.step.completed .step-circle {
+  background: var(--success);
+  color: white;
+  border-color: var(--success);
+}
+
+.step-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: white; /* Fondo blanco pequeño para legibilidad */
+  padding: 0 5px;
+}
+
+/* --- 4. BADGES (Etiquetas de colores) --- */
+.badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.bg-purple { background: var(--primary-light); color: var(--primary); }
+.bg-yellow { background: #fef9c3; color: #854d0e; }
+.bg-blue   { background: #dbeafe; color: #1e40af; }
+.bg-green  { background: #dcfce7; color: #166534; }
+.bg-red    { background: #fee2e2; color: #991b1b; }
+
+/* --- 5. GRID INFERIOR (Dos columnas) --- */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dividir en 2 mitades exactas */
+  gap: 25px;
+}
+
+@media (max-width: 768px) {
+  .info-grid { grid-template-columns: 1fr; } /* En celular, una columna */
+}
+
+/* --- 6. BOTONES --- */
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: 0.2s;
+}
+.btn-primary { background: var(--primary); color: white; width: 100%; }
+.btn-primary:hover { background: #4a2375; }
+
+.btn-outline { 
+  background: transparent; 
+  border: 1px solid var(--primary); 
+  color: var(--primary); 
+  width: 100%;
+}
+.btn-outline:hover { background: var(--primary-light); }
+
+/* --- 7. LISTA DE REQUISITOS --- */
+.req-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.9rem;
+}
+.req-item:last-child { border-bottom: none; }
+
+
+/* --- ZONA DE UPLOAD (Repositorio) --- */
+.upload-zone {
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  background-color: #f8fafc;
+  transition: all 0.3s;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.upload-zone:hover {
+  border-color: var(--primary);
+  background-color: #f3e8ff;
+}
+
+.upload-icon {
+  font-size: 3rem;
+  color: var(--gray);
+  margin-bottom: 15px;
+}
+
+/* --- TABLA DE ARCHIVOS --- */
+.file-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.file-table th {
+  text-align: left;
+  padding: 12px;
+  color: var(--gray);
+  font-size: 0.8rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.file-table td {
+  padding: 15px 12px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.file-icon {
+  font-size: 1.2rem;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.fa-file-pdf { color: var(--danger); }
+.fa-file-word { color: #2563eb; }
+.fa-file-excel { color: var(--success); }
+
+
+/* --- CRONOGRAMA Y TAREAS --- */
+.task-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px; /* Separación entre filas */
+}
+
+.task-row {
+  background: white;
+  transition: transform 0.2s;
+}
+
+.task-row:hover {
+  transform: scale(1.01);
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.task-row td {
+  padding: 15px;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.task-row td:first-child { border-left: 1px solid #e2e8f0; border-radius: 8px 0 0 8px; }
+.task-row td:last-child { border-right: 1px solid #e2e8f0; border-radius: 0 8px 8px 0; }
+
+/* Barra de progreso visual */
+.progress-bg {
+  width: 100%;
+  height: 8px;
+  background-color: #f1f5f9;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--success);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+/* --- TABLAS DE GESTIÓN (Director/Admin) --- */
+.table-container {
+  overflow-x: auto; /* Para que no rompa en móviles */
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.data-table th {
+  background-color: #f8fafc;
+  color: var(--gray);
+  font-weight: 600;
+  text-align: left;
+  padding: 16px;
+  border-bottom: 2px solid #e2e8f0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.data-table td {
+  padding: 16px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+  font-size: 0.9rem;
+}
+
+.data-table tr:hover {
+  background-color: #f8fafc;
+}
+
+/* Avatar pequeño en la tabla */
+.table-avatar {
+  width: 30px;
+  height: 30px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  margin-right: 10px;
+}

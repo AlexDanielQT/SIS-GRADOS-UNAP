@@ -1,0 +1,139 @@
+/* src/scss/_awawa.scss */
+
+/* 1. VARIABLES GLOBALES (Sobrescribiendo colores de CoreUI si es necesario) */
+:root {
+  --primary: #5c2d91; /* Morado UNAP */
+  --primary-dark: #4a2375;
+  --secondary: #eab308; /* Dorado */
+  --success: #059669;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --light: #f8fafc;
+  --dark: #1e293b;
+  --gray: #64748b;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* 2. CLASES DE UTILIDAD PARA TU LÓGICA */
+.bg-purple { background-color: #f3e8ff; color: #6b21a8; }
+.bg-yellow { background-color: #fef9c3; color: #854d0e; }
+.bg-green { background-color: #dcfce7; color: #166534; }
+.bg-red { background-color: #fee2e2; color: #991b1b; }
+.bg-blue { background-color: #dbeafe; color: #1e40af; }
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* 3. ESTILOS DEL STEPPER (Línea de tiempo de la tesis) */
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 30px 0;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #e2e8f0;
+    z-index: 0;
+  }
+}
+
+.step {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  background: white; /* Importante para tapar la línea de fondo */
+  padding: 0 10px;
+  width: 25%;
+
+  .step-circle {
+    width: 32px;
+    height: 32px;
+    background: #e2e8f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px;
+    color: var(--gray);
+    font-weight: bold;
+    transition: 0.3s;
+    border: 2px solid white;
+  }
+
+  &.active .step-circle {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 0 0 3px #d8b4fe;
+  }
+  
+  &.completed .step-circle {
+    background: var(--success);
+    color: white;
+  }
+  
+  .step-label {
+    font-size: 0.75rem;
+    color: var(--gray);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}
+
+/* 4. LOGIN SCREEN PERSONALIZADO */
+.login-screen { 
+  position: fixed; 
+  inset: 0; 
+  background: linear-gradient(135deg, var(--primary) 0%, #3b0764 100%); 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  z-index: 9999; 
+}
+
+.login-box { 
+  background: white; 
+  padding: 40px; 
+  border-radius: 20px; 
+  width: 90%; 
+  max-width: 800px; 
+  text-align: center; 
+  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); 
+}
+
+.roles-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+  gap: 15px; 
+  margin-top: 30px; 
+}
+
+.role-card { 
+  padding: 20px; 
+  border: 1px solid #e2e8f0; 
+  border-radius: 12px; 
+  cursor: pointer; 
+  transition: 0.2s; 
+  background: white;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  gap: 10px; 
+
+  &:hover { 
+    border-color: var(--primary); 
+    transform: translateY(-4px); 
+    box-shadow: var(--shadow); 
+  }
+}
