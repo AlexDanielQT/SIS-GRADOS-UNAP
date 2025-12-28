@@ -19,7 +19,7 @@ Sigue estos pasos para clonar el proyecto y ejecutarlo en tu entorno local:
 Clona el repositorio y entra a la carpeta del proyecto:
 
 ```bash
-git clone https://github.com/TU_USUARIO/TESIS-FRONTEND.git
+git clone https://github.com/AlexDanielQT/SIS-GRADOS-UNAP
 cd TESIS-FRONTEND
 ```
 
